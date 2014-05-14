@@ -22,13 +22,16 @@ namespace WebSite.Controllers
 
             using (var ctx = new NwdMusikEntities())
             {
-                foreach (var album in ctx.Albums)
+                foreach ( var album in ctx.Albums.Include( "Artist" ) )
                 {
+                    string imagePath = album.CoverImagePath;
+                    if (imagePath == null) imagePath = @"~\Mock\t.jpg";
+
                     model.Albums.Add(
                         new Models.Album { 
                             AlbumId = album.Id,
-                            Artist = "",
-                            //Thumbnail = new FileInfo( album.CoverImagePath ),
+                            Artist = album.Artist.Name,
+                            Thumbnail = new FileInfo( imagePath ),
                             Title = album.Title
                         });
                 }
@@ -46,13 +49,16 @@ namespace WebSite.Controllers
 
             using (var ctx = new NwdMusikEntities())
             {
-                var album = ctx.Albums.Single( x => x.Id == albumId );
+                var album = ctx.Albums.Include( "Tracks" ).Include( "Tracks.Song" ).Single( x => x.Id == albumId );
+
+                string imagePath = album.CoverImagePath;
+                if (imagePath == null) imagePath = @"~\Mock\t.jpg";
 
                 model.AlbumId = album.Id;
                 model.Title = album.Title;
-                model.ArtistName = "";
+                model.ArtistName = album.Artist.Name;
                 model.ReleaseDate = album.ReleaseDate;
-                //model.Thumbnail = new FileInfo( album.CoverImagePath );
+                model.Thumbnail = new FileInfo( imagePath );
 
                 foreach (var track in album.Tracks)
                 {
