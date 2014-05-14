@@ -1,0 +1,42 @@
+﻿@using WebSite.Models
+@using System.Collections.ObjectModel
+
+@model AlbumViewModel
+
+@{
+    Track t1 = new Track();
+    t1.Name = "weneverwerever";
+    t1.Duration = new TimeSpan();
+    
+    Track t2 = new Track();
+    t2.Name = "wakawaka";
+    t2.Duration = new TimeSpan();
+
+    AlbumViewModel tModel = new AlbumViewModel();
+    tModel.Title = "lol duno";
+    tModel.Tracks = new Collection<Track>();
+    tModel.Tracks.Add(t1);
+    tModel.Tracks.Add(t2);
+    
+    ViewBag.Title = tModel.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head {
+    (<meta name="description" content="@String.Join( ", ", tModel.Tracks.Select( x => x.Name ).ToArray() )" />
+}
+
+<h2>@tModel.Title</h2>
+
+<ul>
+@foreach (var track in tModel.Tracks)
+{ 
+    <li>
+        @track.Name
+        @track.Duration
+    </li>
+}
+</ul>
+  
+
+

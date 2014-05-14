@@ -1,0 +1,40 @@
+﻿@using WebSite.Models
+@using System.Collections.ObjectModel
+
+@model CatalogViewModel
+
+@{
+    ViewBag.Title = "Album Catalog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Album a1 = new Album();
+    a1.AlbumId = 1;
+    a1.Artist = "Shakira";
+    a1.Thumbnail = new FileInfo(@"C:\Antoine\01 ITI\Cours\Spinelli CSharp\ASP.Net\Fake\NwdStudents-master\Mock\t.jpg");
+    a1.Title = "A1";
+
+    Album a2 = new Album();
+    a2.AlbumId = 2;
+    a2.Artist = "Beyoncé";
+    a2.Thumbnail = new FileInfo(@"C:\Antoine\01 ITI\Cours\Spinelli CSharp\ASP.Net\Fake\NwdStudents-master\Mock\t.jpg");
+    a2.Title = "A2";
+
+    CatalogViewModel tModel = new CatalogViewModel();
+    tModel.Albums = new Collection<Album>();
+    tModel.Albums.Add(a1);
+    tModel.Albums.Add(a2);
+}
+
+<h2>Album Catalog</h2>
+<ul>
+    @foreach (var album in tModel.Albums)
+    {
+        <li>
+            <a href="@Url.Action("Album", "Catalog", new { albumId = album.AlbumId })">
+                <img src="@album.Thumbnail.FullName" style="height:100px; width:100px; float:left;"/>
+                @Html.Raw( album.Title )
+                @Html.Raw( album.Artist )
+            </a>
+        </li>
+    }
+</ul>
