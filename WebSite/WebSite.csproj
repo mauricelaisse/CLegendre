@@ -165,6 +165,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AlbumController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\AddTrackViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AlbumListViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AlbumViewModel.cs" />
     <Compile Include="Areas\_Public\_PublicAreaRegistration.cs" />
@@ -243,6 +244,7 @@
     <Content Include="Areas\Admin\Views\Album\FormAlbum.cshtml" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\_Public\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Album\AddTrack.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />

@@ -15,7 +15,7 @@ namespace WebSite.Models
         public string ArtistName { get; set; }
         public string Title { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public FileInfo Thumbnail { get; set; }
+        public string Thumbnail { get; set; }
     }
 
     public class Track

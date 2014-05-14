@@ -28,9 +28,17 @@
         </li>
 
         <li>
+            @Html.LabelFor(m => m.ArtistName)
+            @Html.TextBoxFor(m => m.ArtistName)
+            @Html.ValidationMessageFor(m => m.ArtistName)
+        </li>
+
+        <li>
             Cover image : 
             <input type ="file" name ="file" />
         </li>
+
+        
     </ul>
     
     <input type ="submit" value ="Save" />

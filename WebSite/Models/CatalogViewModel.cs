@@ -17,6 +17,6 @@ namespace WebSite.Models
         public int AlbumId { get; set; }
         public string Artist { get; set; }
         public string Title { get; set; }
-        public FileInfo Thumbnail { get; set; }
+        public string Thumbnail { get; set; }
     }
 }

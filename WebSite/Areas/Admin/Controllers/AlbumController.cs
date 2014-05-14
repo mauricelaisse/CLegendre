@@ -94,6 +94,18 @@ namespace WebSite.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public ActionResult AddTrack()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddTrack(AddTrackViewModel model)
+        {
+            return View();
+        }
+
+        [HttpGet]
         public JsonResult IsTitleAvailable(string Title)
         {
             var repo = new AlbumRepository();
@@ -109,6 +121,12 @@ namespace WebSite.Areas.Admin.Controllers
             album.Duration = model.Duration;
             album.Type = model.Type;
 
+            if (album.Artist == null)
+            {
+                album.Artist = new Artist();
+            }
+            album.Artist.Name = model.ArtistName;
+
             // fixes runtime error (release date not used in website)
             album.ReleaseDate = DateTime.UtcNow;
         }
@@ -119,6 +137,13 @@ namespace WebSite.Areas.Admin.Controllers
             model.Title = album.Title;
             model.Duration = album.Duration;
             model.Type = album.Type;
+
+            if (album.Artist == null)
+            {
+                album.Artist = new Artist();
+            }
+            
+            model.ArtistName = album.Artist.Name;
 
             if (album.CoverImagePath != String.Empty)
             {

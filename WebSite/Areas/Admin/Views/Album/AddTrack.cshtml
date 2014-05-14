@@ -1,0 +1,29 @@
+﻿@model WebSite.Areas.Admin.ViewModels.AddTrackViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Add track to album";
+}
+
+<h2>AddTrack</h2>
+<ul>
+@using (Html.BeginForm("Addtrack", "Album", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+        <li>
+            @Html.LabelFor(m => m.TrackName)
+            @Html.TextBoxFor(m => m.TrackName)
+            @Html.ValidationMessageFor(m => m.TrackName)
+        </li>
+    
+        <li>
+            @Html.LabelFor(m => m.Duration)
+            @Html.TextBoxFor(m => m.Duration)
+            @Html.ValidationMessageFor(m => m.Duration)
+        </li>
+    
+        <li>
+            The file :
+            <input type ="file" name ="file" />
+        </li>
+}
+</ul>

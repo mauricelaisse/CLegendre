@@ -6,6 +6,10 @@
 }
 <h2>Edit an album</h2>
 
+Tracks : 
+
+@Html.ActionLink("Add a track to this album", "AddTrack")
+
 @using (Html.BeginForm("Edit", "Album", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <ul>
@@ -25,6 +29,12 @@
             @Html.LabelFor(m => m.Type)
             @Html.TextBoxFor(m => m.Type)
             @Html.ValidationMessageFor(m => m.Type)
+        </li>
+
+        <li>
+            @Html.LabelFor(m => m.ArtistName)
+            @Html.TextBoxFor(m => m.ArtistName)
+            @Html.ValidationMessageFor(m => m.ArtistName)
         </li>
 
         <li>

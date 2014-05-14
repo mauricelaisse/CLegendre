@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nwd.BackOffice.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -22,5 +23,10 @@ namespace WebSite.Areas.Admin.ViewModels
         public string Type { get; set; }
 
         public string ImagePath { get; set; }
+
+        [Required]
+        public string ArtistName { get; set; }
+
+        public ICollection<Track> Tracks { get; set; }
     }
 }
