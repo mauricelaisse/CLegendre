@@ -27,8 +27,8 @@ namespace WebSite.Controllers
                     model.Albums.Add(
                         new Models.Album { 
                             AlbumId = album.Id,
-                            Artist = album.Artist.Name,
-                            Thumbnail = new FileInfo( album.CoverImagePath ),
+                            Artist = "",
+                            //Thumbnail = new FileInfo( album.CoverImagePath ),
                             Title = album.Title
                         });
                 }
@@ -50,9 +50,9 @@ namespace WebSite.Controllers
 
                 model.AlbumId = album.Id;
                 model.Title = album.Title;
-                model.ArtistName = album.Artist.Name;
+                model.ArtistName = "";
                 model.ReleaseDate = album.ReleaseDate;
-                model.Thumbnail = new FileInfo( album.CoverImagePath );
+                //model.Thumbnail = new FileInfo( album.CoverImagePath );
 
                 foreach (var track in album.Tracks)
                 {

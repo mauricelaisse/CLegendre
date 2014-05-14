@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebSite.Areas.Admin.ViewModels
 {
-    public class AlbumListViewModel
+    public class AlbumViewListModel
     {
         public ICollection<Album> Albums {get; set;}
     }

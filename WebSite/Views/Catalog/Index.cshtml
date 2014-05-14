@@ -23,6 +23,8 @@
     tModel.Albums = new Collection<Album>();
     tModel.Albums.Add(a1);
     tModel.Albums.Add(a2);
+
+    tModel = Model;
 }
 
 <h2>Album Catalog</h2>
@@ -31,7 +33,7 @@
     {
         <li>
             <a href="@Url.Action("Album", "Catalog", new { albumId = album.AlbumId })">
-                <img src="@album.Thumbnail.FullName" style="height:100px; width:100px; float:left;"/>
+                <img src="album.Thumbnail.FullName" style="height:100px; width:100px; float:left;"/>
                 @Html.Raw( album.Title )
                 @Html.Raw( album.Artist )
             </a>

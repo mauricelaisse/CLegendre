@@ -1,0 +1,15 @@
+﻿@model WebSite.Areas.Admin.ViewModels.AlbumViewListModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Manage Albums";
+}
+
+@Html.ActionLink("Add an album", "Create")
+
+<ul>
+    @foreach (var album in Model.Albums)
+    {
+        <li>@Html.ActionLink(album.Title, "Edit", new { id = album.Id }, null)</li>
+    }
+</ul>

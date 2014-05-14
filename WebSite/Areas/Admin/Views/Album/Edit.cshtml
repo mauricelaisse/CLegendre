@@ -1,0 +1,32 @@
+﻿@model WebSite.Areas.Admin.ViewModels.AlbumViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Manage Albums";
+}
+<h2>Edit an album</h2>
+
+@using(Html.BeginForm("Edit", "Album"))
+{
+    <ul>
+        <li>
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title)
+            @Html.ValidationMessageFor(m => m.Title)
+        </li>
+
+        <li>
+            @Html.LabelFor(m => m.Duration)
+            @Html.TextBoxFor(m => m.Duration)
+            @Html.ValidationMessageFor(m => m.Duration)
+        </li>
+    
+        <li>
+            @Html.LabelFor(m => m.Type)
+            @Html.TextBoxFor(m => m.Type)
+            @Html.ValidationMessageFor(m => m.Type)
+        </li>
+    </ul>
+    
+    <input type ="submit" value ="Save" />
+}
