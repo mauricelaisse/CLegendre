@@ -20,5 +20,7 @@ namespace WebSite.Areas.Admin.ViewModels
 
         [Required]
         public string Type { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

@@ -6,7 +6,7 @@
 }
 <h2>Edit an album</h2>
 
-@using(Html.BeginForm("Edit", "Album"))
+@using (Html.BeginForm("Edit", "Album", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <ul>
         <li>
@@ -25,6 +25,17 @@
             @Html.LabelFor(m => m.Type)
             @Html.TextBoxFor(m => m.Type)
             @Html.ValidationMessageFor(m => m.Type)
+        </li>
+
+        <li>
+            Cover image :
+
+            @if (Model.ImagePath != String.Empty)
+            { 
+                <img src ="@Model.ImagePath" />
+            }
+
+            <input type ="file" name ="file" />
         </li>
     </ul>
     

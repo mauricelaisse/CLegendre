@@ -36,7 +36,7 @@ namespace WebSite.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(AlbumViewModel model)
+        public ActionResult Create(AlbumViewModel model, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -44,6 +44,11 @@ namespace WebSite.Areas.Admin.Controllers
                 var album = new Album();
 
                 UpdateAlbumFromViewModel(model, album);
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    album.CoverFile = file;
+                }
 
                 repo.CreateAlbum(album, this.Server);
                 return RedirectToAction("List");
@@ -66,7 +71,7 @@ namespace WebSite.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, AlbumViewModel model)
+        public ActionResult Edit(int id, AlbumViewModel model, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -74,6 +79,11 @@ namespace WebSite.Areas.Admin.Controllers
                 var album = repo.GetAlbumForEdit(id);
 
                 UpdateAlbumFromViewModel(model, album);
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    album.CoverFile = file;
+                }
 
                 repo.EditAlbum(this.Server, album);
                 return RedirectToAction("List");
@@ -99,6 +109,7 @@ namespace WebSite.Areas.Admin.Controllers
             album.Duration = model.Duration;
             album.Type = model.Type;
 
+            // fixes runtime error (release date not used in website)
             album.ReleaseDate = DateTime.UtcNow;
         }
 
@@ -108,6 +119,11 @@ namespace WebSite.Areas.Admin.Controllers
             model.Title = album.Title;
             model.Duration = album.Duration;
             model.Type = album.Type;
+
+            if (album.CoverImagePath != String.Empty)
+            {
+                model.ImagePath = album.CoverImagePath;
+            }
         }
 
         #endregion
