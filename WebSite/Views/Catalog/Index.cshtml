@@ -27,16 +27,37 @@
     tModel = Model;
 }
 
-<h2>Album Catalog</h2>
-<ul>
-    @foreach (var album in tModel.Albums)
-    {
-        <li>
-            <a href="@Url.Action("Album", "Catalog", new { albumId = album.AlbumId })">
-                <img src="@album.Thumbnail" style="height:100px; width:100px; float:left;"/>
-                @Html.Raw( album.Title )
-                @Html.Raw( album.Artist )
-            </a>
-        </li>
+<style>
+    .card {
+        overflow: hidden;
+        min-height: 330px;
+        background: #fff;
+        padding: 12px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        border: 1px solid;
+        border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+        -webkit-border-radius: 3px;
     }
-</ul>
+</style>
+<h2>Album Catalog</h2>
+
+    <div class="container card">
+        <div class="row">
+           @foreach (var album in tModel.Albums)
+           {
+               <div class="col-sm-3">
+                   <a class="album-title" href="@Url.Action("Album", "Catalog", new { albumId = album.AlbumId })">
+                       <img src="@album.Thumbnail" style="height:80px; width:80px;" />
+                       <span class="album-title pull-right">
+                           <b>@album.Title</b>
+                           <br>
+                           <i>@album.Artist</i>
+                       </span>
+                   </a>
+
+               </div>
+           }
+        </div>
+    </div>

@@ -6,24 +6,25 @@
 }
 
 <h2>AddTrack</h2>
-<ul>
+
 @using (Html.BeginForm("Addtrack", "Album", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-        <li>
+    <div class="form">
+        <div class="form-group">
             @Html.LabelFor(m => m.TrackName)
-            @Html.TextBoxFor(m => m.TrackName)
+            @Html.TextBoxFor(m => m.TrackName, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.TrackName)
-        </li>
-    
-        <li>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(m => m.Duration)
-            @Html.TextBoxFor(m => m.Duration)
+            @Html.TextBoxFor(m => m.Duration, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Duration)
-        </li>
-    
-        <li>
+        </div>
+
+        <div class="form-group">
             The file :
-            <input type ="file" name ="file" />
-        </li>
+            <input type="file" name="file" />
+        </div>
+    </div>
 }
-</ul>

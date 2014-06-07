@@ -10,44 +10,48 @@ Tracks :
 
 @Html.ActionLink("Add a track to this album", "AddTrack")
 
-@using (Html.BeginForm("Edit", "Album", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <ul>
-        <li>
-            @Html.LabelFor(m => m.Title)
-            @Html.TextBoxFor(m => m.Title)
-            @Html.ValidationMessageFor(m => m.Title)
-        </li>
 
-        <li>
-            @Html.LabelFor(m => m.Duration)
-            @Html.TextBoxFor(m => m.Duration)
-            @Html.ValidationMessageFor(m => m.Duration)
-        </li>
-    
-        <li>
-            @Html.LabelFor(m => m.Type)
-            @Html.TextBoxFor(m => m.Type)
-            @Html.ValidationMessageFor(m => m.Type)
-        </li>
+    @using (Html.BeginForm("Edit", "Album", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Title)
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title)
+            </div>
 
-        <li>
-            @Html.LabelFor(m => m.ArtistName)
-            @Html.TextBoxFor(m => m.ArtistName)
-            @Html.ValidationMessageFor(m => m.ArtistName)
-        </li>
+            <div class="form-group">
+                    @Html.LabelFor(m => m.Duration)
+                    @Html.TextBoxFor(m => m.Duration, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Duration)
+            </div>
 
-        <li>
-            Cover image :
+            <div class="form-group">
+                    @Html.LabelFor(m => m.Type)
+                    @Html.TextBoxFor(m => m.Type, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Type)
+            </div>
 
-            @if (Model.ImagePath != String.Empty)
-            { 
-                <img src ="@Model.ImagePath" />
-            }
+            <div class="form-group">
+                    @Html.LabelFor(m => m.ArtistName)
+                    @Html.TextBoxFor(m => m.ArtistName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ArtistName)
+            </div>
 
-            <input type ="file" name ="file" />
-        </li>
-    </ul>
-    
-    <input type ="submit" value ="Save" />
-}
+            <div class="form-group">
+                    Cover image :
+
+                    @if (Model.ImagePath != String.Empty)
+                {
+                        <img src="@Model.ImagePath" />
+                }
+
+                    <input type="file" name="file" />
+            </div>
+       
+
+            <input class="btn btn-default" type="submit" value="Save Change" />
+            <a href="/Admin/Album/List" class="pull-right btn btn-danger">Cancel</a>
+     </div>
+     
+    }

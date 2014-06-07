@@ -5,11 +5,34 @@
     ViewBag.Title = "Manage Albums";
 }
 
-@Html.ActionLink("Add an album", "Create")
 
-<ul>
-    @foreach (var album in Model.Albums)
-    {
-        <li>@Html.ActionLink(album.Title, "Edit", new { id = album.Id }, null)</li>
-    }
-</ul>
+<div class="container">
+    <h2>@Html.ActionLink("Add an album", "Create")</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Type</th>
+
+                <th>Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var album in Model.Albums)
+            {
+              <tr>
+                    
+                 
+                      <td>@album.Id</td>
+                      <td><img src="@album.CoverImagePath" style="width:30px; height:30px;" alt="" title="" /></td>
+                      <td><a href="/Admin/Album/Edit/@album.Id">@album.Title</a></td>
+                      <td>@album.Type</td>
+                      <td>@album.Duration</td>
+
+               </tr>
+            }
+        </tbody>
+    </table>
+</div>

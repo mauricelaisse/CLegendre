@@ -23,20 +23,32 @@
 }
 
 @section Head {
-    (<meta name="description" content="@String.Join( ", ", tModel.Tracks.Select( x => x.Name ).ToArray() )" />
+    <meta name="description" content="@String.Join( ", ", tModel.Tracks.Select( x => x.Name ).ToArray() )" />
 }
 
-<h2>@tModel.Title</h2>
-
-<ul>
-@foreach (var track in tModel.Tracks)
-{ 
-    <li>
-        @track.Name
-        @track.Duration
-    </li>
-}
-</ul>
+<div class="container">
+    <h2>@tModel.Title</h2>
+    <span class="pull-right"><a href="/music/albums/catalog" class="btn btn-danger">Back</a></span>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Durtion</th>
+            </tr>
+        </thead>
+        <tbody>
+           @foreach (var track in tModel.Tracks)
+            {
+                <tr>
+                    <td>@track.TrackId</td>
+                    <td>@track.Name</td>
+                    <td>@track.Duration</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
   
 
 

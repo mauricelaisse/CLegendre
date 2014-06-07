@@ -8,38 +8,38 @@
 
 @using(Html.BeginForm("Create", "Album", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <ul>
-        <li>
+    <div class="form">
+         <div class="form-group">
             @Html.LabelFor(m => m.Title)
-            @Html.TextBoxFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Title)
-        </li>
+        </div>
 
-        <li>
+         <div class="form-group">
             @Html.LabelFor(m => m.Duration)
-            @Html.TextBoxFor(m => m.Duration)
+            @Html.TextBoxFor(m => m.Duration, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Duration)
-        </li>
+        </div>
     
-        <li>
+         <div class="form-group">
             @Html.LabelFor(m => m.Type)
-            @Html.TextBoxFor(m => m.Type)
+            @Html.TextBoxFor(m => m.Type, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Type)
-        </li>
+        </div>
 
-        <li>
+         <div class="form-group">
             @Html.LabelFor(m => m.ArtistName)
-            @Html.TextBoxFor(m => m.ArtistName)
+            @Html.TextBoxFor(m => m.ArtistName, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.ArtistName)
-        </li>
+        </div>
 
-        <li>
+         <div class="form-group">
             Cover image : 
             <input type ="file" name ="file" />
-        </li>
+        </div>
 
-        
-    </ul>
-    
-    <input type ="submit" value ="Save" />
+      
+        <input type ="submit" value ="Save" />
+        <a href="/Admin/Album/List" class="pull-right btn btn-danger">Cancel</a>
+    </div>
 }

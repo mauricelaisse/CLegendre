@@ -25,12 +25,12 @@ namespace WebSite.Controllers
                 foreach ( var album in ctx.Albums.Include( "Artist" ) )
                 {
                     string imagePath = album.CoverImagePath;
-                    if (imagePath == null) imagePath = @"~\Mock\t.jpg";
+                    if (imagePath == null) imagePath = @"http://t3.gstatic.com/images?q=tbn:ANd9GcTX0c54w2uFob5uFKp7MQIFHlkWSTWxsXUDV7p8lhBDWOlo7PpOZCN-UwaQiA";
 
                     model.Albums.Add(
                         new Models.Album { 
                             AlbumId = album.Id,
-                            Artist = "",
+                            Artist = "My Artist",
                             Thumbnail = imagePath,
                             Title = album.Title
                         });
